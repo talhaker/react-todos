@@ -12,7 +12,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to {this.props.applicationName}</h1>
         </header>
-        <Todos buttonText="Add Item" name="todo-item" />
+        <Todos buttonText="Add Item" />
       </div>
     );
   }
