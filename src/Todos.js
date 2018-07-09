@@ -17,22 +17,32 @@ class Todos extends Component {
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onButtonClick = this.onButtonClick.bind(this);
+  };
+
+  onInputChange = () => {
+    this.setState((state, props) => {
+      return { text: this.myForm.textInput.value }
+    });
   }
 
-  onInputChange() {
-    console.log('Input changed!');
-  }
-
-  onButtonClick() {
-    alert("clicked");
-  }
+  onButtonClick = () => {
+    let todo = this.state.text;
+//    this.setState({todoList: this.state.todoList.concat([todo])});
+    // this.setState(prevState => ({
+    //   todoList: [...prevState.todoList, todo]
+    // }));
+    this.setState((state, props) => {
+      return { todoList: state.todoList.concat(todo), text: "" }
+    });
+}
 
   render() {
     return (
       <div>
         <h1>{this.state.text}</h1>
-        <MyForm onTextChange={this.onInputChange} onButtonClick={this.onButtonClick} buttonText={this.props.buttonText} />
-        <TodoList todoList={this.state.todoList} />
+        <MyForm onTextChange={this.onInputChange} onButtonClick={this.onButtonClick}
+                        ref={(form)=>this.myForm = form} inputText={this.state.text} buttonText={this.props.buttonText}/>
+        <TodoList todoList={this.state.todoList}/>
       </div>
     );
   }
@@ -44,3 +54,6 @@ Todos.propTypes = {
 };
 
 export default Todos;
+
+
+// אריאל 0527345545 (צורי גואטה)

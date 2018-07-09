@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 
-function MyForm(props) { 
-    return (
-        <form>
-            <input type="text" id="txtTodo" onChange={props.onTextChange} />
-            <button type="button" onClick={props.onButtonClick}>{props.buttonText}</button>
-        </form>
-    );
+class MyForm extends Component {
+    constructor() {
+        super();
+
+        this.textInput = null;
+    }
+
+    render() {
+        return (
+            <form>
+                <input
+                    type="text"
+                    id="txtTodo"
+                    value={this.props.inputText}
+                    onChange={this.props.onTextChange}
+                    ref={(input)=>this.textInput=input}/>
+                <button type="button" onClick={this.props.onButtonClick}>{this.props.buttonText}</button>
+            </form>
+        );
+    }
 }
 
 export default MyForm;
